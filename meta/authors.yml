@@ -1,5 +1,8 @@
 authors:
-  - slug: wutali
+  - slug: jacek
+    name: Jacek
+    introduction: my name is Jacek
+  - slug: takahiro-fujiwara
     name: Takahiro Fujiwara
     introduction:
       Co-founder and CTO at Fuller, Inc. / Software & Data Engineer /
