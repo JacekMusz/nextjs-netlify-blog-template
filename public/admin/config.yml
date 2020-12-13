@@ -88,7 +88,24 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-
+      - name: "styledAs"
+        label: "styledAs"
+        file: "meta/styledAs.yml"
+        description: "text property styledAs"
+        fields:
+          - name: styledAs
+            label: styledAs
+            label_singular: "styledAs"
+            widget: list
+            fields:
+              - label: "Slug"
+                name: "slug"
+                widget: "string"
+                hint: "styledAs"
+              - label: "Name"
+                name: "name"
+                widget: "string"
+                hint: "styledAs"
   - name: "posts"
     label: "Posts"
     folder: "src/pages/posts"

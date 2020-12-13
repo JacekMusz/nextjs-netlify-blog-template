@@ -16,16 +16,23 @@ type Props = {
     current: number;
     pages: number;
   };
+  text?: any;
 };
-export default function Index({ posts, tags, pagination }: Props) {
+export default function Index(props: any) {
+  console.log(props);
   const url = "/posts";
   const title = "All posts";
+  console.log();
   return (
     <Layout>
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} />
+      <PostList
+        posts={props.posts}
+        tags={props.tags}
+        pagination={props.pagination}
+      />
     </Layout>
   );
 }
