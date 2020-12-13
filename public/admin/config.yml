@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: JacekMusz/nextjs-netlify-blog-template
   branch: master
 media_folder: public/images
 public_folder: /images
@@ -139,3 +140,29 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
+  - name: "text"
+    label: "Text"
+    folder: "src/pages/myComponent/text"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: slug
+    summary: "{{title}}"
+    fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Text"
+        name: "text"
+        widget: "string"
+      - label: styledAs
+        name: "styledAs"
+        widget: relation
+        collection: "meta"
+        file: "styledAs"
+        searchFields:
+          - "styledAs.*.name"
+        displayFields:
+          - "styledAs.*.name"
+        valueField: "styledAs.*.slug"
