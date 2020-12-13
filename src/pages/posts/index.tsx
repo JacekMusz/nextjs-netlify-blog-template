@@ -7,6 +7,7 @@ import PostList from "../../components/PostList";
 import config from "../../lib/config";
 import { countPosts, listPostContent, PostContent } from "../../lib/posts";
 import { listTags, TagContent } from "../../lib/tags";
+import { listStyledAs } from "../../lib/styledAs";
 import Head from "next/head";
 
 type Props = {
@@ -19,10 +20,8 @@ type Props = {
   text?: any;
 };
 export default function Index(props: any) {
-  console.log(props);
   const url = "/posts";
   const title = "All posts";
-  console.log();
   return (
     <Layout>
       <BasicMeta url={url} title={title} />
@@ -40,6 +39,8 @@ export default function Index(props: any) {
 export const getStaticProps: GetStaticProps = async () => {
   const posts = listPostContent(1, config.posts_per_page);
   const tags = listTags();
+  const styledAs = listStyledAs();
+  console.log("index ->", styledAs);
   const pagination = {
     current: 1,
     pages: Math.ceil(countPosts() / config.posts_per_page),
