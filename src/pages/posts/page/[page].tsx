@@ -8,18 +8,20 @@ import PostList from "../../../components/PostList";
 import config from "../../../lib/config";
 import { countPosts, listPostContent, PostContent } from "../../../lib/posts";
 import { listTags, TagContent } from "../../../lib/tags";
-import Text from "./../../../components/Text";
+import MyText from "../../../components/MyText";
+import { listTextContent } from "../../../lib/texts";
 
 type Props = {
   posts: PostContent[];
   tags: TagContent[];
   page: number;
+  texts?: any;
   pagination: {
     current: number;
     pages: number;
   };
 };
-export default function Page({ posts, tags, pagination, page }: Props) {
+export default function Page({ posts, tags, pagination, page, texts }: Props) {
   const url = `/posts/page/${page}`;
   const title = "All posts";
   return (
@@ -27,17 +29,21 @@ export default function Page({ posts, tags, pagination, page }: Props) {
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={posts} tags={tags} pagination={pagination} />
-      {/* <Text></Text> */}
+      <PostList
+        posts={posts}
+        tags={tags}
+        pagination={pagination}
+        texts={texts}
+      />
     </Layout>
   );
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log("page->", params);
   const page = parseInt(params.page as string);
   const posts = listPostContent(page, config.posts_per_page);
   const tags = listTags();
+  const texts = listTextContent();
   const pagination = {
     current: page,
     pages: Math.ceil(countPosts() / config.posts_per_page),
@@ -48,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       posts,
       tags,
       pagination,
+      texts,
     },
   };
 };

@@ -88,24 +88,24 @@ collections:
                 name: "name"
                 widget: "string"
                 hint: "Tag name for displaying on the site"
-      - name: "styledAs"
-        label: "styledAs"
-        file: "meta/styledAs.yml"
-        description: "text property styledAs"
+      - name: "textStyle"
+        label: "textStyle"
+        file: "meta/textStyle.yml"
+        description: "text property textStyle"
         fields:
-          - name: styledAs
-            label: styledAs
-            label_singular: "styledAs"
+          - name: textStyle
+            label: textStyle
+            label_singular: "textStyle"
             widget: list
             fields:
               - label: "Slug"
                 name: "slug"
                 widget: "string"
-                hint: "styledAs"
+                hint: "textStyle"
               - label: "Name"
                 name: "name"
                 widget: "string"
-                hint: "styledAs"
+                hint: "textStyle"
   - name: "posts"
     label: "Posts"
     folder: "src/pages/posts"
@@ -177,9 +177,19 @@ collections:
         name: "styledAs"
         widget: relation
         collection: "meta"
-        file: "styledAs"
+        file: "textStyle"
         searchFields:
-          - "styledAs.*.name"
+          - "textStyle.*.name"
         displayFields:
-          - "styledAs.*.name"
-        valueField: "styledAs.*.slug"
+          - "textStyle.*.name"
+        valueField: "textStyle.*.name"
+      - label: "as"
+        name: "as"
+        widget: relation
+        collection: "meta"
+        file: "textStyle"
+        searchFields:
+          - "textStyle.*.name"
+        displayFields:
+          - "textStyle.*.name"
+        valueField: "textStyle.*.name"

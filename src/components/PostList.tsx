@@ -4,7 +4,7 @@ import PostItem from "./PostItem";
 import TagLink from "./TagLink";
 import Pagination from "./Pagination";
 import { TagContent } from "../lib/tags";
-
+import MyText from "./MyText";
 type Props = {
   posts: PostContent[];
   tags: TagContent[];
@@ -12,11 +12,21 @@ type Props = {
     current: number;
     pages: number;
   };
+  texts: any;
 };
-export default function PostList({ posts, tags, pagination }: Props) {
+export default function PostList({ posts, tags, pagination, texts }: Props) {
   return (
     <div className={"container"}>
       <div className={"posts"}>
+        {texts.map((item) => {
+          return (
+            <MyText
+              slug={item.text}
+              styledAs={item.styledAs}
+              name={item.text}
+            ></MyText>
+          );
+        })}
         <ul className={"post-list"}>
           {posts.map((it, i) => (
             <li key={i}>

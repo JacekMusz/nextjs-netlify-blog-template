@@ -1,0 +1,13 @@
+textStyle:
+  - name: h1
+    slug: h1
+  - name: h2
+    slug: h2
+  - name: h3
+    slug: h3
+  - name: h4
+    slug: h4
+  - name: h5
+    slug: h5
+  - name: h6
+    slug: h6
